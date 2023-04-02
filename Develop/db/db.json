@@ -1,17 +1,12 @@
 [
     {
-        "title": "ID",
-        "text": "is there an id in this post?",
-        "notes_id": "4dcb8550-33b5-40ae-a641-0a1b14df6be1"
+        "title": "Hey",
+        "text": "hiu",
+        "id": "1ab246b4-d368-4f2b-8e31-d2af2458a830"
     },
     {
-        "title": "jello",
-        "text": "Jello my dawgs",
-        "notes_id": "42d53935-88a4-43ef-9f28-c2b43424c8f6"
-    },
-    {
-        "title": "gfg",
-        "text": "fgfg",
-        "notes_id": "c0f85f90-86a8-4964-b1c3-7eef68a594d7"
+        "title": "Hey there",
+        "text": "Whats poppinnnnn",
+        "id": "0a6ec8b1-1a74-4656-b680-1cef70c3061f"
     }
 ]

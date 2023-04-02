@@ -17,7 +17,7 @@ notes.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            notes_id: uuidv4(),
+            id: uuidv4(),
         }
     
     readAndAppend(newNote, '../db/db.json');
@@ -27,7 +27,7 @@ notes.post('/', (req, res) => {
     }
 })
 
-app.get('/:notes_id', (req, res) => {
+notes.get('/:id', (req, res) => {
     console.info(`${req.method} request received for notes id`);
     const {id} = req.params;
     readFromFile('../db/db.json')

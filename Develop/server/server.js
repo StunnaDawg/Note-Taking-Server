@@ -42,7 +42,7 @@ app.get('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            notes_id: uuidv4(),
+            id: uuidv4(),
         }
     
     readAndAppend(newNote, '../db/db.json');
@@ -54,7 +54,7 @@ app.get('/api/notes', (req, res) => {
 
 
 // find a specific note depending on the id
-app.get('/api/notes/:notes_id', (req, res) => {
+app.get('/api/notes/:id', (req, res) => {
     console.info(`${req.method} request received for notes id`);
     const {id} = req.params;
     readFromFile('../db/db.json')

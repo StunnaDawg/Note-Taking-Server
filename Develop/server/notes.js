@@ -1,5 +1,6 @@
 const notes = require('express').Router()
 const { readFromFile, writeToFile, readAndAppend } = require('../helper/fsutilities');
+const notesid = require('../helper/uuid');
 
 notes.get('/', (req, res) => {
     console.info(`${req.method} recieved for the stored notes`)
@@ -15,7 +16,8 @@ notes.post('/', (req, res) => {
     if (title && text) {
         const newNote = {
             title,
-            text
+            text,
+            notes_id: notesid(),
         }
     
     readAndAppend(newNote, '../db/db.json');

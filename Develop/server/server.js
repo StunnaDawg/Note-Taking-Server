@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const api = require('./index')
 const {readFromFile, writeToFile, readAndAppend} = require('../helper/fsutilities');
+const notesid = require('../helper/uuid');
 const app = express();
 const PORT = 3000;
 
@@ -39,7 +40,8 @@ app.get('/api/notes', (req, res) => {
     if (title && text) {
         const newNote = {
             title,
-            text
+            text,
+            notes_id: notesid(),
         }
     
     readAndAppend(newNote, '../db/db.json');

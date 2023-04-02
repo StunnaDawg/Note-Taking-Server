@@ -31,6 +31,7 @@ app.get('/api/notes', (req, res) => {
     readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
   });
 
+
   app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request complete`)
     console.log(`${req.body}`);
@@ -50,3 +51,25 @@ app.get('/api/notes', (req, res) => {
         res.json('error error')
     }
 })
+
+
+// find a specific note depending on the id
+app.get('/api/notes/:notes_id', (req, res) => {
+    console.info(`${req.method} request received for notes id`);
+    const {id} = req.params;
+    readFromFile('../db/db.json')
+    .then((data) => {
+      const notes = JSON.parse(data);
+      const note = notes.find((note) => note.id === id);
+
+      if (note) {
+        res.json(note);
+      } else {
+        res.status(404).send('Note not found');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Server error');
+    });
+  });

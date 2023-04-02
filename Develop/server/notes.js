@@ -27,4 +27,24 @@ notes.post('/', (req, res) => {
     }
 })
 
+app.get('/:notes_id', (req, res) => {
+    console.info(`${req.method} request received for notes id`);
+    const {id} = req.params;
+    readFromFile('../db/db.json')
+    .then((data) => {
+      const notes = JSON.parse(data);
+      const note = notes.find((note) => note.id === id);
+
+      if (note) {
+        res.json(note);
+      } else {
+        res.status(404).send('Note not found');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Server error');
+    });
+  });
+
 module.exports = notes;

@@ -1,31 +1,12 @@
 [
     {
-        "title": "Breakfast notes",
-        "text": "Man this breakfast slaps!"
-    },
-    {
-        "title": "Hello",
-        "text": "Hey there"
-    },
-    {
-        "title": "Hello",
-        "text": "Hey"
-    },
-    {
-        "title": "Let GOOOOO",
-        "text": "HEY NOWWWWWWW"
-    },
-    {
-        "title": "sad",
-        "text": "asds"
-    },
-    {
-        "title": "Hey there mr",
-        "text": "Hey there"
-    },
-    {
         "title": "ID",
         "text": "is there an id in this post?",
         "notes_id": "4dcb8550-33b5-40ae-a641-0a1b14df6be1"
+    },
+    {
+        "title": "jello",
+        "text": "Jello my dawgs",
+        "notes_id": "42d53935-88a4-43ef-9f28-c2b43424c8f6"
     }
 ]

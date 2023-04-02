@@ -54,22 +54,20 @@ app.get('/api/notes', (req, res) => {
 
 
 // find a specific note depending on the id
-app.get('/api/notes/:id', (req, res) => {
-    console.info(`${req.method} request received for notes id`);
-    const {id} = req.params;
-    readFromFile('../db/db.json')
-    .then((data) => {
-      const notes = JSON.parse(data);
-      const note = notes.find((note) => note.id === id);
-
-      if (note) {
-        res.json(note);
-      } else {
-        res.status(404).send('Note not found');
-      }
+/* app.delete('/api/notes/:id', (req, res) => {
+    if (req.body && req.params.id) {
+        console.info(`${req.method} request received for notes id ${req.params.id}`);
+        const id = req.params.id;
+        readFromFile('../db/db.json')
+        .then((notes) => {
+          const index = notes.findIndex((note) => note.id == id);
+            notes.splice(index, 1);
+            return writeToFile('../db/db.json', notes);
+    })
+    .then(() => {
+      res.sendStatus(204);
     })
     .catch((err) => {
-      console.error(err);
-      res.status(500).send('Server error');
+      res.status(404).send(err.message);
     });
-  });
+  }}); */

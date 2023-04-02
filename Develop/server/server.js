@@ -13,7 +13,7 @@ app.use('/api', api);
 
 app.get('/', (req, res) => res.send('Navigate to /index or /notes'));
 
-app.get('/index', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 

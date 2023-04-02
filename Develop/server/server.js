@@ -1,8 +1,7 @@
 const express = require('express');
 const path = require('path');
 const api = require('./index')
-const fs = require('fs')
-const utility = require('util');
+const {readFromFile, writeToFile, readAndAppend} = require('../helper/fsutilities');
 const app = express();
 const PORT = 3000;
 
@@ -25,9 +24,27 @@ app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`)
 })
 
-const readFile = utility.promisify(fs.readFile)
 
 app.get('/api/notes', (req, res) => {
     console.info(`${req.method} request received for notes`);
-    readFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+    readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
   });
+
+  app.post('/api/notes', (req, res) => {
+    console.info(`${req.method} request complete`)
+    console.log(`${req.body}`);
+
+    const {title, text} = req.body;
+
+    if (title && text) {
+        const newNote = {
+            title,
+            text
+        }
+    
+    readAndAppend(newNote, '../db/db.json');
+    res.json('Note recieved')
+    } else {
+        res.json('error error')
+    }
+})

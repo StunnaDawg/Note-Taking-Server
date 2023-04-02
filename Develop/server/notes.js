@@ -12,7 +12,7 @@ notes.post('/', (req, res) => {
 
     const {title, text} = req.body;
 
-    if (req.body) {
+    if (title && text) {
         const newNote = {
             title,
             text
@@ -21,7 +21,7 @@ notes.post('/', (req, res) => {
     readAndAppend(newNote, '../db/db.json');
     res.json('Note recieved')
     } else {
-        res.error('error error')
+        res.json('error error')
     }
 })
 

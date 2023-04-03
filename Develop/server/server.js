@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('../public'));
 app.use('/api', api);
 
+// sets up the routes to the pages
 app.get('/', (req, res) => res.send('Navigate to /index or /notes'));
 
 app.get('/*', (req, res) => {
@@ -20,19 +21,20 @@ app.get('/*', (req, res) => {
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/notes.html'))
 })
-
+// used for local server
 app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`)
 })
 
-
+// gets the JSON data from db.json
 app.get('/api/notes', (req, res) => {
     console.info(`${req.method} request received for notes`);
     readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
   });
 
-
-  app.post('/api/notes', (req, res) => {
+// post to the notes
+// makes sure title and text are present and generates a unique ID that is used for a DELETE request
+app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request complete`)
     console.log(`${req.body}`);
 
@@ -53,7 +55,8 @@ app.get('/api/notes', (req, res) => {
 })
 
 
-// find a specific note depending on the id
+// find a specific note depending on the id to complete a DELETE request
+// Unfinished
 /* app.delete('/api/notes/:id', (req, res) => {
     if (req.body && req.params.id) {
         console.info(`${req.method} request received for notes id ${req.params.id}`);

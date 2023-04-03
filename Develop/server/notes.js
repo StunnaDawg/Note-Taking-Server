@@ -2,11 +2,14 @@ const notes = require('express').Router()
 const { readFromFile, writeToFile, readAndAppend } = require('../helper/fsutilities');
 const { v4: uuidv4 } = require('uuid');
 
+// Get request to receive notes
 notes.get('/', (req, res) => {
     console.info(`${req.method} recieved for the stored notes`)
     readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)))
 })
 
+// post to the notes
+// makes sure title and text are present and generates a unique ID that is used for a DELETE request
 notes.post('/', (req, res) => {
     console.info(`${req.method} request complete`)
     console.log(`${req.body}`);
@@ -27,6 +30,8 @@ notes.post('/', (req, res) => {
     }
 })
 
+// Unfinished Delete request
+// reads from note file and looks for entered id 
 /* notes.delete('/:id', (req, res) => {
     const id = JSON.stringify(req.params.id);
     let noteFile = readFromFile('../db/db.json')

@@ -14,7 +14,7 @@ app.use('/api', api);
 // sets up the routes to the pages
 app.get('/', (req, res) => res.send('Navigate to /index or /notes'));
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 

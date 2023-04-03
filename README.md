@@ -28,5 +28,6 @@ Upon downloading the application make sure you do the following:
 ![Alt](./Assets/images/localhost_3000_notes.png)
 
 ## Dependencies 
+- NodeJS: https://nodejs.org/ 
 - Express.JS: http://expressjs.com/
 - UUID (random id generator): https://www.npmjs.com/package/uuid
